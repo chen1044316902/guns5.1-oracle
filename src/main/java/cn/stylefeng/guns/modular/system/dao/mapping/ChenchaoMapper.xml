@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.ChenchaoMapper">
+	<resultMap id="bashMap" type="cn.stylefeng.guns.modular.system.model.Chenchao">
+			     <id property="id" column="ID" />
+			    <result property="name" column="NAME"/>
+			    <result property="description" column="DESCRIPTION"/>
+			    <result property="createTime" column="CREATE_TIME"/>
+			    <result property="deptId" column="DEPT_ID"/>
+			    <result property="loginUser" column="LOGIN_USER"/>
+			    <result property="userName" column="USER_NAME"/>
+	</resultMap>
+
+	<sql id="columns">
+          ID, NAME, DESCRIPTION, CREATE_TIME, DEPT_ID, LOGIN_USER, USER_NAME
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+			
+					    <if test="model.id != null and model.id != '' "> AND ID  LIKE #{model.id,jdbcType=VARCHAR}  </if>
+			
+					    <if test="model.name != null and model.name != '' "> AND NAME  LIKE #{model.name,jdbcType=VARCHAR}  </if>
+			
+					    <if test="model.description != null and model.description != '' "> AND DESCRIPTION  LIKE #{model.description,jdbcType=VARCHAR}  </if>
+			
+		 			    <if test="model.createTime != null and model.createTime != '' "> AND CREATE_TIME =#{model.createTime} </if>
+			
+					    <if test="model.deptId != null and model.deptId != '' "> AND DEPT_ID  LIKE #{model.deptId,jdbcType=VARCHAR}  </if>
+			
+					    <if test="model.loginUser != null and model.loginUser != '' "> AND LOGIN_USER  LIKE #{model.loginUser,jdbcType=VARCHAR}  </if>
+			
+					    <if test="model.userName != null and model.userName != '' "> AND USER_NAME  LIKE #{model.userName,jdbcType=VARCHAR}  </if>
+		</where>
+	</sql>
+
+	
+
+	<select id="findList" resultType="cn.stylefeng.guns.modular.system.model.Chenchao"  >
+		SELECT <include refid="columns"/>
+		FROM CHENCHAO   
+		<include refid="dynamicWhere" />
+		<choose>
+			<when test="pageMap.orderByField != null and pageMap.orderByField !=''">
+				<choose>
+					<when test="pageMap.isAsc == true">
+						order by ${pageMap.orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${pageMap.orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by TO_char(CHENCHAO.create_time, 'yyyy-mm-dd HH24:MI:SS') desc
+			</otherwise>
+		</choose>
+	</select>
+</mapper>

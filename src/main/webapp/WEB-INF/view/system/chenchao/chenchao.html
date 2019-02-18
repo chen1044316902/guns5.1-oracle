@@ -1,0 +1,44 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>陈超管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                          		<div class="col-sm-3">
+           							<#NameCon id="name" name="NAME" />	
+           						</div>
+                          		<div class="col-sm-3">
+           							<#NameCon id="description" name="DESC" />	
+           						</div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="Chenchao.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="ChenchaoTableToolbar" role="group">
+                            @if(shiro.hasPermission("/chenchao/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="Chenchao.openAddChenchao()"/>
+                            @}
+                            @if(shiro.hasPermission("/chenchao/update")){
+                                <#button name="修改" icon="fa-edit" clickFun="Chenchao.openChenchaoDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/chenchao/delete")){
+                                <#button name="删除" icon="fa-remove" clickFun="Chenchao.delete()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/chenchao/update")){
+                                <#button name="详情" icon="fa-edit" clickFun="Chenchao.detail()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="ChenchaoTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/chenchao/chenchao.js"></script>
+@}

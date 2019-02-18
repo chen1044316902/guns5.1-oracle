@@ -1,0 +1,2 @@
+①：解压styledeng.rar 把解压后的文件夹放到maven本地仓库cn下面，复制的时候选择替换选项
+②：把gunstest.sql导入，然后导入gunstest.dump

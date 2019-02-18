@@ -1,0 +1,46 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                        		<#input id="gid" name="自检任务结果" value="${item.gid}" underline="true" readonly="readonly" />
+                            	<#input id="code" name="检测单据号" value="${item.code}" underline="true"/>
+                            	<#input id="dispatchCode" name="派工单编号" value="${item.dispatchCode}" underline="true"/>
+                            	<#input id="productName" name="产品名称" value="${item.productName}" underline="true"/>
+                            	<#input id="produUid" name="产品编码" value="${item.produUid}" underline="true"/>
+                            	<#input id="opName" name="工序名称" value="${item.opName}" underline="true"/>
+                            	<#input id="opCode" name="工序编号" value="${item.opCode}" underline="true"/>
+                            	<#input id="workstationCode" name="工位编号" value="${item.workstationCode}" underline="true"/>
+                            	<#input id="result" name="单据检测结果(0未判定、1不合格、7合格)" value="${item.result}" underline="true"/>
+                            	<#input id="citemCode" name="检测项编码" value="${item.citemCode}" underline="true"/>
+                            <#input id="citemName" name="检测项名称" value="${item.citemName}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="citemRemark" name="检测项说明" value="${item.citemRemark}" underline="true"/>
+                            <#input id="checkModel" name="检测项类型(0定性检测1定量检测2装配信息)" value="${item.checkModel}" underline="true"/>
+                            <#input id="standardValue" name="标准值（1定量检测）" value="${item.standardValue}" underline="true"/>
+                            <#input id="minValue" name="控制下限（1定量检测）" value="${item.minValue}" underline="true"/>
+                            <#input id="maxValue" name="控制上限（1定量检测）" value="${item.maxValue}" underline="true"/>
+                            <#input id="chkValue" name="控制上限（1定量检测）" value="${item.chkValue}" underline="true"/>
+                            <#input id="chkResult" name="控制上限（1定量检测）" value="${item.chkResult}" underline="true"/>
+                            <#input id="remark" name="备注（2装配信息-填写序列号）" value="${item.remark}" underline="true"/>
+                            <#input id="processer" name="处理人工号" value="${item.processer}" underline="true"/>
+                            <#input id="processDate" name="处理时间" value="${item.processDate}" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t"  style="display:${display};" >
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="JczxChkbillMesInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="JczxChkbillMesInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/jczxChkbillMes/jczxChkbillMes_info.js"></script>
+@}

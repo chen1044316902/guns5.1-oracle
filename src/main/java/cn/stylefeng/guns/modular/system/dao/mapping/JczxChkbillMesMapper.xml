@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.JczxChkbillMesMapper">
+	<resultMap id="bashMap" type="cn.stylefeng.guns.modular.system.model.JczxChkbillMes">
+			    <result property="gid" column="GID"/>
+			    <result property="code" column="CODE"/>
+			    <result property="dispatchCode" column="DISPATCH_CODE"/>
+			    <result property="productName" column="PRODUCT_NAME"/>
+			    <result property="produUid" column="PRODU_UID"/>
+			    <result property="opName" column="OP_NAME"/>
+			    <result property="opCode" column="OP_CODE"/>
+			    <result property="workstationCode" column="WORKSTATION_CODE"/>
+			    <result property="result" column="RESULT"/>
+			    <result property="citemCode" column="CITEM_CODE"/>
+			    <result property="citemName" column="CITEM_NAME"/>
+			    <result property="citemRemark" column="CITEM_REMARK"/>
+			    <result property="checkModel" column="CHECK_MODEL"/>
+			    <result property="standardValue" column="STANDARD_VALUE"/>
+			    <result property="minValue" column="MIN_VALUE"/>
+			    <result property="maxValue" column="MAX_VALUE"/>
+			    <result property="chkValue" column="CHK_VALUE"/>
+			    <result property="chkResult" column="CHK_RESULT"/>
+			    <result property="remark" column="REMARK"/>
+			    <result property="processer" column="PROCESSER"/>
+			    <result property="processDate" column="PROCESS_DATE"/>
+			    <result property="specialCode" column="SPECIAL_CODE"/>
+			    <result property="checkGroup" column="CHECK_GROUP"/>
+			    <result property="flag" column="FLAG"/>
+			    <result property="fileContent" column="FILE_CONTENT"/>
+	</resultMap>
+
+	<sql id="columns">
+          GID, CODE, DISPATCH_CODE, PRODUCT_NAME, PRODU_UID, OP_NAME, OP_CODE, WORKSTATION_CODE, RESULT, CITEM_CODE, CITEM_NAME, CITEM_REMARK, CHECK_MODEL, STANDARD_VALUE, MIN_VALUE, MAX_VALUE, CHK_VALUE, CHK_RESULT, REMARK, PROCESSER, PROCESS_DATE, SPECIAL_CODE, CHECK_GROUP, FLAG, FILE_CONTENT
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+			
+					    <if test="gid != null and gid != '' "> AND GID  LIKE #{gid,jdbcType=VARCHAR}  </if>
+			
+					    <if test="code != null and code != '' "> AND CODE  LIKE #{code,jdbcType=VARCHAR}  </if>
+			
+					    <if test="dispatchCode != null and dispatchCode != '' "> AND DISPATCH_CODE  LIKE #{dispatchCode,jdbcType=VARCHAR}  </if>
+			
+					    <if test="productName != null and productName != '' "> AND PRODUCT_NAME  LIKE #{productName,jdbcType=VARCHAR}  </if>
+			
+					    <if test="produUid != null and produUid != '' "> AND PRODU_UID  LIKE #{produUid,jdbcType=VARCHAR}  </if>
+			
+					    <if test="opName != null and opName != '' "> AND OP_NAME  LIKE #{opName,jdbcType=VARCHAR}  </if>
+			
+					    <if test="opCode != null and opCode != '' "> AND OP_CODE  LIKE #{opCode,jdbcType=VARCHAR}  </if>
+			
+					    <if test="workstationCode != null and workstationCode != '' "> AND WORKSTATION_CODE  LIKE #{workstationCode,jdbcType=VARCHAR}  </if>
+			
+		 			    <if test="result != null and result != '' "> AND RESULT =#{result} </if>
+			
+					    <if test="citemCode != null and citemCode != '' "> AND CITEM_CODE  LIKE #{citemCode,jdbcType=VARCHAR}  </if>
+			
+					    <if test="citemName != null and citemName != '' "> AND CITEM_NAME  LIKE #{citemName,jdbcType=VARCHAR}  </if>
+			
+					    <if test="citemRemark != null and citemRemark != '' "> AND CITEM_REMARK  LIKE #{citemRemark,jdbcType=VARCHAR}  </if>
+			
+		 			    <if test="checkModel != null and checkModel != '' "> AND CHECK_MODEL =#{checkModel} </if>
+			
+		 			    <if test="standardValue != null and standardValue != '' "> AND STANDARD_VALUE =#{standardValue} </if>
+			
+		 			    <if test="minValue != null and minValue != '' "> AND MIN_VALUE =#{minValue} </if>
+			
+		 			    <if test="maxValue != null and maxValue != '' "> AND MAX_VALUE =#{maxValue} </if>
+			
+					    <if test="chkValue != null and chkValue != '' "> AND CHK_VALUE  LIKE #{chkValue,jdbcType=VARCHAR}  </if>
+			
+		 			    <if test="chkResult != null and chkResult != '' "> AND CHK_RESULT =#{chkResult} </if>
+			
+					    <if test="remark != null and remark != '' "> AND REMARK  LIKE #{remark,jdbcType=VARCHAR}  </if>
+			
+					    <if test="processer != null and processer != '' "> AND PROCESSER  LIKE #{processer,jdbcType=VARCHAR}  </if>
+			
+		 			    <if test="processDate != null and processDate != '' "> AND PROCESS_DATE =#{processDate} </if>
+			
+					    <if test="specialCode != null and specialCode != '' "> AND SPECIAL_CODE  LIKE #{specialCode,jdbcType=VARCHAR}  </if>
+			
+					    <if test="checkGroup != null and checkGroup != '' "> AND CHECK_GROUP  LIKE #{checkGroup,jdbcType=VARCHAR}  </if>
+			
+		 			    <if test="flag != null and flag != '' "> AND FLAG =#{flag} </if>
+			
+		 			    <if test="fileContent != null and fileContent != '' "> AND FILE_CONTENT =#{fileContent} </if>
+		</where>
+	</sql>
+
+	
+
+	<select id="findList" resultType="cn.stylefeng.guns.modular.system.model.JczxChkbillMes" parameterType="cn.stylefeng.guns.modular.system.model.JczxChkbillMes" >
+		SELECT <include refid="columns"/>
+		FROM JCZX_CHKBILL_MES   
+		<include refid="dynamicWhere" />
+		order by TO_char(JCZX_CHKBILL_MES.create_time, 'yyyy-mm-dd HH24:MI:SS') desc
+	</select>
+</mapper>
